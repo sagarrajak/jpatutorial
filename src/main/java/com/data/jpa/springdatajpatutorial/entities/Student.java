@@ -4,6 +4,7 @@ import lombok.*;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Getter
@@ -32,4 +33,23 @@ public class Student {
 
     @Embedded
     private Guardian guardian;
+
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    @JoinTable(
+            name = "student_course_map",
+            joinColumns = @JoinColumn(
+                    name = "id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "course_id",
+                    referencedColumnName = "courseId"
+            )
+    )
+    List<Course> courseList;
+
+
 }
