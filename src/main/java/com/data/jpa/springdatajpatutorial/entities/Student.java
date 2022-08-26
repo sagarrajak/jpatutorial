@@ -4,6 +4,7 @@ import lombok.*;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -51,5 +52,8 @@ public class Student {
     )
     List<Course> courseList;
 
-
+    public  void addCourse(Course course) {
+        if (this.courseList == null) this.courseList = new ArrayList<>();
+        this.courseList.add(course);
+    }
 }

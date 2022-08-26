@@ -1,5 +1,6 @@
 package com.data.jpa.springdatajpatutorial.repository;
 
+import com.data.jpa.springdatajpatutorial.entities.Course;
 import com.data.jpa.springdatajpatutorial.entities.Guardian;
 import com.data.jpa.springdatajpatutorial.entities.Student;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,19 @@ class StudentRepositoryTest {
                             .email("sagarrajak859@gmail.com")
                 .guardian(Guardian.builder().mobile("4343434").name("krishna").email("krishnarajak@gmail.com").build())
                 .build();
+        this.studentRepository.save(student);
+    }
+
+    @Test
+    public void saveStudentWithCourse() {
+        Student student = Student.builder()
+                .firstName("some student")
+                .lastName("second name")
+                .email("sagarrajak89@gmail.com")
+                .guardian(Guardian.builder().mobile("4343434").name("krishna").email("krishnarajak@gmail.com").build())
+                .build();
+        Course course = Course.builder().title("some course").credits(6).build();
+        student.addCourse(course);
         this.studentRepository.save(student);
     }
 

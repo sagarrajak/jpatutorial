@@ -19,7 +19,6 @@ class TeacherRepositoryTest {
     @Test
     public void  addTeacher() {
         Course course = Course.builder().title("sasasas").credits(6).build();
-
         Teacher teacher = Teacher.builder().firstName("sasa").lastName("sdsdsd").course(List.of(course)).build();
         teacherRepository.save(teacher);
     }
